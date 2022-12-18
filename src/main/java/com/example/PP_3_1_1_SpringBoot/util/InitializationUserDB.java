@@ -37,7 +37,7 @@ public class InitializationUserDB {
         set.add(role1);
         set.add(role2);
 
-        User user1 = new User(new BCryptPasswordEncoder(8).encode("123qweasd"), 1L, "Урусов", "Артур", 22,  "urusovartur@gmail.com", set );
+        User user1 = new User(new BCryptPasswordEncoder(8).encode("123qweasd"), "Урусов", "Артур", 22,  "urusovartur@gmail.com", set );
 
         userService.save(user1);
 

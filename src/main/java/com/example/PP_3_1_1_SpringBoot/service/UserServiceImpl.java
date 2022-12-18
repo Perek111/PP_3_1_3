@@ -2,7 +2,6 @@ package com.example.PP_3_1_1_SpringBoot.service;
 
 import com.example.PP_3_1_1_SpringBoot.dao.UserDao;
 import com.example.PP_3_1_1_SpringBoot.models.User;
-import com.example.PP_3_1_1_SpringBoot.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,7 +14,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
-    private final UserRepository userRepository;
+    //private final UserRepository userRepository;
     private final RoleService roleService;
     private final UserDao userDao;
 
@@ -26,9 +25,9 @@ public class UserServiceImpl implements UserService {
     //}
 
     @Autowired
-    public UserServiceImpl(UserDao userDao, RoleService roleService, UserRepository userRepository) {
+    public UserServiceImpl(UserDao userDao, RoleService roleService) {
         this.userDao = userDao;
-        this.userRepository = userRepository;
+        //this.userRepository = userRepository;
         this.roleService = roleService;
     }
 
