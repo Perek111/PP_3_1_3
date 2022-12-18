@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.HashSet;
 import java.util.Set;
@@ -54,9 +56,11 @@ public class AdminController {
         return "add";
     }
 
-    @PostMapping("/{id}/edit")
-    public String editUser(@ModelAttribute("user") User user,
+    @PatchMapping("/{id}/edit")
+    public String editUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                            @RequestParam(required = false) String roleAdmin) {
+        if (bindingResult.hasErrors())
+            return "userInAdmin";
         Set<Role> roles = new HashSet<>();
         roles.add(roleService.findByName("USER"));
         if (roleAdmin != null && roleAdmin.equals("ADMIN")) {
@@ -68,8 +72,10 @@ public class AdminController {
     }
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute("user") User user,
+    public String addUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                           @RequestParam(required = false) String roleAdmin) {
+        if (bindingResult.hasErrors())
+            return "add";
         Set<Role> roles = new HashSet<>();
         roles.add(roleService.findByName("USER"));
         if (roleAdmin != null && roleAdmin.equals("ADMIN")) {

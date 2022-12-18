@@ -65,21 +65,25 @@
                                     <label for="name">Name</label>
                                     <input th:name="name" th:type="text" class="form-control"
                                            id="name" placeholder="Enter name">
+                                    <div style="color:gray" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Error text</div>
                                 </div>
                                 <div class="form-group fw-bold">
                                     <label for="lastName">LastName</label>
                                     <input th:name="lastName" th:type="text" class="form-control"
                                            id="lastName" placeholder="Enter lastName">
+                                    <div style="color:gray" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Error text</div>
                                 </div>
                                 <div class="form-group fw-bold">
                                     <label for="age">Age</label>
                                     <input th:name="age" th:type="number" min="0" max="127" class="form-control"
                                            id="age" placeholder="Enter age">
+                                    <div style="color:gray" th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Error text</div>
                                 </div>
                                 <div class="form-group fw-bold">
                                     <label for="email">Email</label>
                                     <input th:name="email" th:type="text" class="form-control"
                                            id="email" placeholder="Enter email">
+                                    <div style="color:gray" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error text</div>
                                 </div>
                                 <div class="form-group fw-bold">
                                     <label for="password">Password</label>

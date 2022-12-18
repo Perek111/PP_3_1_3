@@ -15,7 +15,7 @@
 </head>
 <body>
 <h1>Edit user</h1>
-<form action="#" th:method="POST" th:action="@{/admin/edit/}" th:object="${user}">
+<form action="#" th:method="PATCH" th:action="@{/admin/edit/}" th:object="${user}">
   <table>
     <tr>
       <td>
