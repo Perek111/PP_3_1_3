@@ -150,6 +150,9 @@ public class User implements UserDetails {
         return sb.toString();
     }
 
+    public String getEmptyPassword() {
+        return "";
+    }
     @Override
     public String toString() {
         return "User{" +

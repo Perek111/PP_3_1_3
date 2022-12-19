@@ -56,18 +56,18 @@ public class AdminController {
         return "add";
     }
 
-    @PatchMapping("/{id}/edit")
+    @PostMapping("/{id}/edit")
     public String editUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
-                           @RequestParam(required = false) String roleAdmin) {
+                           @RequestParam(required = false) String roleAdmin,
+                           @PathVariable("id") Long id) {
         if (bindingResult.hasErrors())
             return "userInAdmin";
         Set<Role> roles = new HashSet<>();
-        roles.add(roleService.findByName("USER"));
-        if (roleAdmin != null && roleAdmin.equals("ADMIN")) {
+        if (roleAdmin != null && roleAdmin.equals("ADMIN"))
             roles.add(roleService.findByName("ADMIN"));
-        }
+        else roles.add(roleService.findByName("USER"));
         user.setRoles(roles);
-        userService.update(user);
+        userService.update(id, user);
         return "redirect:/admin";
     }
 
@@ -77,10 +77,8 @@ public class AdminController {
         if (bindingResult.hasErrors())
             return "add";
         Set<Role> roles = new HashSet<>();
-        roles.add(roleService.findByName("USER"));
-        if (roleAdmin != null && roleAdmin.equals("ADMIN")) {
-            roles.add(roleService.findByName("ADMIN"));
-        }
+        if (roleAdmin != null && roleAdmin.equals("ADMIN")) roles.add(roleService.findByName("ADMIN"));
+        else roles.add(roleService.findByName("USER"));
 
         user.setRoles(roles);
         userService.save(user);

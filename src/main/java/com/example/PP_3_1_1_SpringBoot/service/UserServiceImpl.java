@@ -5,6 +5,7 @@ import com.example.PP_3_1_1_SpringBoot.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -39,7 +40,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void save(User user) {
+        System.out.println(user.getPassword());
         userDao.save(user);
+        System.out.println(user.getPassword());
     }
 
     @Override
@@ -63,7 +66,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void update(User user) {
+    public void update(Long id, User user) {
+        System.out.println(user.getPassword());
+        user.setId(id);
         userDao.update(user);
+        System.out.println(user.getPassword());
     }
 }

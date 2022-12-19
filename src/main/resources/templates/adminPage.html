@@ -71,7 +71,7 @@
                       <td th:text="${user.lastName}">Surname</td>
                       <td th:text="${user.age}">Age</td>
                       <td th:text="${user.email}">Email</td>
-                      <td th:text="${user.roles}">Role</td>
+                      <td th:text="${user.getRolesToString()}">Roles</td>
                       <td>
                         <a type="button" class="btn btn-sm btn-info text-white"
                            data-bs-toggle="modal"
@@ -190,7 +190,7 @@
                                 <label for="role1"><b>Role</b></label>
                                 <input th:name="role1" th:type="text"
                                        class="form-control"
-                                       id="role1" th:value="${user.roles}" disabled/>
+                                       id="role1" th:value="${user.getRolesToString()}" disabled/>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary"
