@@ -2,8 +2,6 @@ package com.example.PP_3_1_1_SpringBoot.dao;
 
 
 import com.example.PP_3_1_1_SpringBoot.models.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import java.util.List;
 

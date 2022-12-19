@@ -15,20 +15,12 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 public class UserServiceImpl implements UserService {
-    //private final UserRepository userRepository;
     private final RoleService roleService;
     private final UserDao userDao;
-
-    //@Autowired
-    //public UserServiceImpl(UserRepository userRepository, RoleService roleService) {
-    //    this.userRepository = userRepository;
-    //    this.roleService = roleService;
-    //}
 
     @Autowired
     public UserServiceImpl(UserDao userDao, RoleService roleService) {
         this.userDao = userDao;
-        //this.userRepository = userRepository;
         this.roleService = roleService;
     }
 
@@ -40,9 +32,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void save(User user) {
-        System.out.println(user.getPassword());
         userDao.save(user);
-        System.out.println(user.getPassword());
     }
 
     @Override
@@ -67,9 +57,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public void update(Long id, User user) {
-        System.out.println(user.getPassword());
         user.setId(id);
         userDao.update(user);
-        System.out.println(user.getPassword());
     }
 }

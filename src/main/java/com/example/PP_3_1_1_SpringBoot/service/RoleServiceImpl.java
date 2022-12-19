@@ -13,13 +13,7 @@ import java.util.stream.Collectors;
 @Service
 @Transactional(readOnly = true)
 public class RoleServiceImpl implements RoleService{
-    //private final RoleRepository roleRepository;
     private final RoleDao roleDao;
-
-    //@Autowired
-    //public RoleServiceImpl(RoleRepository roleRepository) {
-    //    this.roleRepository = roleRepository;
-    //}
 
     @Autowired
     public RoleServiceImpl(RoleDao roleDao) {
